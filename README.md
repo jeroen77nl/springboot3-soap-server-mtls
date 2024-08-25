@@ -14,6 +14,14 @@ The root folder contains the following certificate and key-files for client test
 
 See article https://paras301.medium.com/implementing-ssl-tls-in-springboot-mutual-tls-mtls-part-2-b3eb64c6a78e for more info about the creation of these stores.
 
+# running the server app
+
+These commands should suffice for running the server app from the project root directory:
+```cmd
+./mvnw clean install
+./mvnw spring-boot:run
+```
+
 # testmessages
 
 The http-tests directory contains two XML test messages and some scripts.
