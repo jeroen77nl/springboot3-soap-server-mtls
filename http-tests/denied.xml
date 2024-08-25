@@ -1,0 +1,14 @@
+<soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:loan="http://www.javatechie.com/spring/soap/api/loanEligibility">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <loan:CustomerRequest>
+      <loan:customerName>Willem de Arme</loan:customerName>
+      <loan:age>25</loan:age>
+      <loan:yearlyIncome>100000</loan:yearlyIncome>
+      <loan:cibilScore>700</loan:cibilScore>
+      <loan:employmentMode>govt</loan:employmentMode>
+    </loan:CustomerRequest>
+  </soapenv:Body>
+</soapenv:Envelope>
