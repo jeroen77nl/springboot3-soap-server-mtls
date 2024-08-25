@@ -1,3 +1,30 @@
-curl -X POST -H "Content-Type: text/xml;charset=UTF-8" --data @http-tests/approved.xml http://localhost:8080/ws
+# mTLS enabled, approval by app
+curl -X POST \
+--header 'Content-Type: text/xml;charset=UTF-8' \
+--data @http-tests/approved.xml \
+--cert client.crt \
+--key client.key \
+--cacert ca.crt \
+--location https://localhost:8443/ws
 
-curl -X POST -H "Content-Type: text/xml;charset=UTF-8" --data @http-tests/denied.xml http://localhost:8080/ws
+# mTLS enabled, denial by app
+curl -X POST \
+--header 'Content-Type: text/xml;charset=UTF-8' \
+--data @http-tests/denied.xml \
+--cert client.crt \
+--key client.key \
+--cacert ca.crt \
+--location https://localhost:8443/ws
+
+# mTLS disabled, approval by app
+curl -X POST \
+--header "Content-Type: text/xml;charset=UTF-8" \
+--data @http-tests/approved.xml \
+--location http://localhost:8443/ws
+
+# mTLS disabled, denial by app
+curl -X POST \
+--header "Content-Type: text/xml;charset=UTF-8" \
+--data @http-tests/denied.xml \
+--location http://localhost:8443/ws
+

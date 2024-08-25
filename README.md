@@ -1,29 +1,24 @@
-# springboot3-soap-server
+# springboot3-soap-server-mtls
 
-This application is a modern variant of a demo by Java Techie (https://www.youtube.com/watch?v=ceSqN3CWd14). The important changes are:
+This application is a modern variant of a demo by Java Techie (https://www.youtube.com/watch?v=ceSqN3CWd14).
+This is basically a copy of my repo **spring boot 3-soap-server**, with the addition of mutual TLS functionality.
 
-- Spring Boot 2 -> 3.x
-- Other plugin with JAXB3 support: org.jvnet.jaxb/jaxb-maven-plugin
-- Java 8 -> 17 
-- Test messages added
-- Location generated sources: /src -> /target
-- Maven wrapper added
+The resources folder contains two stores used by the app for mTLS:
+- server-keystore.p12
+- server-truststore.jks
 
-The jaxb2-maven-plugin will compile loaneligibility.xsd into fully annotated java classes. The plugin uses the generate tool as a code-generation engine.
+The root folder contains the following certificate and key-files for client testing purposes:
+- ca.crt
+- client.crt
+- client.key
 
-# view wsdl
+See article https://paras301.medium.com/implementing-ssl-tls-in-springboot-mutual-tls-mtls-part-2-b3eb64c6a78e for more info about the creation of these stores.
 
-Spring Boot generates a WSDL based on the XSD, so no need to create one by hand.
-Url: http://localhost:8080/ws/loanEligibility.wsdl
+# testmessages
 
-# testberichten
+The http-tests directory contains two XML test messages and some scripts.
+From the CLI, the test messages can be sent as requests using curl using tests.curl
 
-The http-tests directory contains two XML test messages. 
-These messages can be send to a running application with file tests.http. 
-In IntelliJ Ultimate, the tests can be started with the built-in HTTP client using the green arrow.
+The mTLS is enabled by default and the server runs on port 8443.
 
-From the CLI, the test messages can be sent as requests using curl:
-```curl
-curl -v -X POST -H "Content-Type: text/xml;charset=UTF-8" --data @http-tests/approved.xml http://localhost:8080/ws
-curl -v -X POST -H "Content-Type: text/xml;charset=UTF-8" --data @http-tests/denied.xml http://localhost:8080/ws
-```
+mTLS can be disabled by setting property **server.ssl.enabled=true** to false. A restart is required.
