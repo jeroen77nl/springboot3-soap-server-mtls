@@ -9,7 +9,7 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>nl.jeroen</groupId>
-  <artifactId>springboot3-soap-server</artifactId>
+  <artifactId>springboot3-soap-server-mtls</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>springboot3-soap-server</name>
   <description>Spring Boot 3 SOAP server</description>
